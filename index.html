@@ -10,16 +10,12 @@
         /* Set the size of the map */
         #map {
             width: 100%;
-<<<<<<< HEAD
-            height: 100%;
+            height: 500px;
             position: absolute; 
             top: 0;
             bottom: 0;
             left: 0;
             right: 0;
-=======
-            height: 100vh;
->>>>>>> 92cc6f41f11335cdde15f38656f1c80b3ffedf1d
         }
     </style>
 </head>
@@ -31,18 +27,13 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         // Initialize the map and set its view to the chosen geographical coordinates and zoom level
-<<<<<<< HEAD
         var map = L.map('map').setView([47.7231, -86.9407], 5); // Coordinates set to Lake Superior by default
-=======
-        var map = L.map('map').setView([47.7231, -86.9407], 10); // Coordinates set to London by default
->>>>>>> 92cc6f41f11335cdde15f38656f1c80b3ffedf1d
 
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 19,
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
-<<<<<<< HEAD
 
         // GeoJSON dataset
         var dataset1 = [
@@ -138,9 +129,6 @@
             },
             onEachFeature: onEachFeature
         }).addTo(map);
-=======
-      
->>>>>>> 92cc6f41f11335cdde15f38656f1c80b3ffedf1d
     </script>
 </body>
 </html>
