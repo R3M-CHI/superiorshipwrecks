@@ -139,54 +139,57 @@
                     type: 'Point',
                     coordinates: [-90.999722, 47.478056]
                 },
-                properties: {
-                    title: 'Ship 6',
-                    description: 'NAME',
-                    time: '1992/01',
-                    image: 'images/spencer.png', // Replace with your image URL
-                    icon: {
-                        iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-                        iconSize: [25, 41],
-                        iconAnchor: [12, 41],
-                        popupAnchor: [1, -34]
+            properties: {
+                title: 'SS Chester A. Congdon',
+                description: 'Type: Lake freighter <br>En route to Port McNicoll, ON, the <em>Chester A Congdon</em> encountered a heavy storm. After attempting to shelter in Thunder Bay, ON, the captain continued the journey, where the ship met heavy fog. She ran aground on the northeastern point of Isle Royale in the early afternoon. The <em>Congdon<em> broke in two and delayed assistance. <a href="--" target="_blank"Learn more</a>', //change link
+                time: '1918/11/06', //year month day
+                image: 'images/Chester_A._Congdon.jpg',
+                icon: {
+                    iconUrl: 'images/cargo-ship.png',
+                    iconSize: [40, 40],
+                    iconAnchor: [3, 35],
+                    popupAnchor: [0, -41],
+                    className: 'dot',
+                    }
+                }
+            },
+                {
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [-87.333, 46.914]
+            },
+            properties: {
+                title: 'SS Henry B Smith',
+                description: 'Type: Lake freighter<br> One of twelve ships sunk during the Great Lakes Storm of 1913 (7-10 November 1913). Under pressure from the owners, the <em>Smith</em> left port during a lull in the on-going storms. The storm proved to be much stronger than expected with little information provided for ships. Although the <em>Smith</em> attempted to avoid the storm it was soon lost. All 25 of the crew were lost and only two bodies ever recovered. Of the two sunk during the storm on Lake Superior, only the <em>Smith’s</em> wreckage has been located (in 2013).<a href="https://calendar.eji.org/racial-injustice/may/20" target="_blank"Learn more</a>',
+                time: '1913/11/10',
+                image: 'images/Henry_B_Smith_LOC_det_4a16048.jpg',
+                icon: {
+                    iconUrl: 'images/cargo-ship.png',
+                    iconSize: [40, 40],
+                    iconAnchor: [3, 35],
+                    popupAnchor: [0, -41],
+                    className: 'dot',
                     }
                 }
             },
             {
-                type: 'Feature',
-                geometry: {
-                    type: 'Point',
-                    coordinates: [-90.999722, 47.478056]
-                },
-                properties: {
-                    title: 'Ship 7',
-                    description: 'NAME',
-                    time: '1992/01',
-                    image: 'images/spencer.png', // Replace with your image URL
-                    icon: {
-                        iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-                        iconSize: [25, 41],
-                        iconAnchor: [12, 41],
-                        popupAnchor: [1, -34]
-                    }
-                }
+            type: 'Feature',
+            geometry: {
+                type: 'Point',
+                coordinates: [-84.35, 46.503333]
             },
-            {
-                type: 'Feature',
-                geometry: {
-                    type: 'Point',
-                    coordinates: [-90.999722, 47.478056]
-                },
-                properties: {
-                    title: 'Ship 8',
-                    description: 'NAME',
-                    time: '1992/01',
-                    image: 'images/spencer.png', // Replace with your image URL
-                    icon: {
-                        iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-                        iconSize: [25, 41],
-                        iconAnchor: [12, 41],
-                        popupAnchor: [1, -34]
+            properties: {
+                title: 'SS D M Clemson',
+                description: 'Last seen at the Soo Locks on December 1, 1908, the cause of the <em>Clemson’s</em> sinking has never been confirmed. It is possible the ship foundered during a storm (<em>Buffalo Evening News</em>). It is also possible a collision earlier in 1908, although repaired, caused structural damage which led to the sinking. The whole 24-person crew was lost and only five bodies ever recovered. <a href="https://calendar.eji.org/racial-injustice/may/20" target="_blank"Learn more</a>',
+                time: '1961/05/20',
+                image: 'images/D.M._Clemson_2.jpg',
+                icon: {
+                    iconUrl: 'images/cargo-ship.png',
+                    iconSize: [40, 40],
+                    iconAnchor: [3, 35],
+                    popupAnchor: [0, -41],
+                    className: 'dot',
                     }
                 }
             },
@@ -304,66 +307,7 @@
                     }
                 }
             },
-            {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [46.503333, -84.35]
-            },
-            properties: {
-                title: 'SS D M Clemson',
-                description: 'Last seen at the Soo Locks on December 1, 1908, the cause of the <em>Clemson’s</em> sinking has never been confirmed. It is possible the ship foundered during a storm (<em>Buffalo Evening News</em>). It is also possible a collision earlier in 1908, although repaired, caused structural damage which led to the sinking. The whole 24-person crew was lost and only five bodies ever recovered. <a href="https://calendar.eji.org/racial-injustice/may/20" target="_blank"Learn more</a>',
-                time: '1961/05/20',
-                image: 'img/Montgomerybus.jpg',
-                icon: {
-                    iconUrl: 'img/bus.png',
-                    iconSize: [40, 40],
-                    iconAnchor: [3, 35],
-                    popupAnchor: [0, -41],
-                    className: 'dot',
-                    }
-                }
-            },
-            {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [46.914, -87.333]
-            },
-            properties: {
-                title: 'SS Henry B Smith',
-                description: 'Type: Lake freighter<br> One of twelve ships sunk during the Great Lakes Storm of 1913 (7-10 November 1913). Under pressure from the owners, the <em>Smith</em> left port during a lull in the on-going storms. The storm proved to be much stronger than expected with little information provided for ships. Although the <em>Smith</em> attempted to avoid the storm it was soon lost. All 25 of the crew were lost and only two bodies ever recovered. Of the two sunk during the storm on Lake Superior, only the <em>Smith’s</em> wreckage has been located (in 2013).<a href="https://calendar.eji.org/racial-injustice/may/20" target="_blank"Learn more</a>',
-                time: '1913/11/10',
-                image: 'img/Montgomerybus.jpg',
-                icon: {
-                    iconUrl: 'img/bus.png',
-                    iconSize: [40, 40],
-                    iconAnchor: [3, 35],
-                    popupAnchor: [0, -41],
-                    className: 'dot',
-                    }
-                }
-            },
-            {
-            type: 'Feature',
-            geometry: {
-                type: 'Point',
-                coordinates: [48.193333, -88.514444] //longitude,latitude
-            },
-            properties: {
-                title: 'SS Chester A. Congdon',
-                description: 'Type: Lake freighter <br>En route to Port McNicoll, ON, the <em>Chester A Congdon</em> encountered a heavy storm. After attempting to shelter in Thunder Bay, ON, the captain continued the journey, where the ship met heavy fog. She ran aground on the northeastern point of Isle Royale in the early afternoon. The <em>Congdon<em> broke in two and delayed assistance. <a href="--" target="_blank"Learn more</a>', //change link
-                time: '1918/11/06', //year month day
-                image: 'img/--',
-                icon: {
-                    iconUrl: 'img/--',
-                    iconSize: [40, 40],
-                    iconAnchor: [3, 35],
-                    popupAnchor: [0, -41],
-                    className: 'dot',
-                    }
-                }
-            }
+           
 
 
         ];
