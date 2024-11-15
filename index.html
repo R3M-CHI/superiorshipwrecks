@@ -11,6 +11,11 @@
         #map {
             width: 100%;
             height: 100%;
+            position: absolute; 
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
         }
     </style>
 </head>
@@ -22,7 +27,7 @@
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         // Initialize the map and set its view to the chosen geographical coordinates and zoom level
-        var map = L.map('map').setView([47.7231, -86.9407], 5); // Coordinates set to London by default
+        var map = L.map('map').setView([47.7231, -86.9407], 5); // Coordinates set to Lake Superior by default
 
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -30,7 +35,100 @@
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-      
+        // GeoJSON dataset
+        var dataset1 = [
+            {
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-90.999722, 47.478056]
+                },
+                properties: {
+                    title: 'Ship 11',
+                    description: 'George Spencer',
+                    time: '1992/01',
+                    image: 'https://via.placeholder.com/200', // Replace with your image URL
+                    icon: {
+                        iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+                        iconSize: [25, 41],
+                        iconAnchor: [12, 41],
+                        popupAnchor: [1, -34]
+                    }
+                }
+            },
+            {
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-90.448028, 46.94475]
+                },
+                properties: {
+                    title: 'Ship 12',
+                    description: 'Ira H. Owen',
+                    time: '1992/07',
+                    image: 'https://via.placeholder.com/200', // Replace with your image URL
+                    icon: {
+                        iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+                        iconSize: [25, 41],
+                        iconAnchor: [12, 41],
+                        popupAnchor: [1, -34]
+                    }
+                }
+            },
+            {
+                type: 'Feature',
+                geometry: {
+                    type: 'Point',
+                    coordinates: [-91.54935, 47.094917]
+                },
+                properties: {
+                    title: 'Ship 13',
+                    description: 'Lafayette',
+                    time: '1992/06',
+                    image: 'https://via.placeholder.com/200', // Replace with your image URL
+                    icon: {
+                        iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+                        iconSize: [25, 41],
+                        iconAnchor: [12, 41],
+                        popupAnchor: [1, -34]
+                    }
+                }
+            }
+        ];
+
+        // Function to handle each feature in the GeoJSON
+        function onEachFeature(feature, layer) {
+            if (feature.properties) {
+                // Create content for the popup
+                var content = `
+                    <div style='clear: both'></div>
+                    <div style='float: left; padding: 5px; margin-right: 10px'>
+                        <img style='width: 200px;' src='${feature.properties.image}' alt='Ship Image' />
+                    </div>
+                    <div>
+                        <h4>${feature.properties.title}</h4>
+                        <p><strong>Year:</strong> ${feature.properties.time}</p>
+                        <p>${feature.properties.description}</p>
+                    </div>`;
+                
+                // Create a custom Leaflet icon
+                var customIcon = L.icon(feature.properties.icon);
+
+                // Set the custom icon for the layer
+                layer.setIcon(customIcon);
+
+                // Bind the popup to the layer
+                layer.bindPopup(content, { closeButton: true });
+            }
+        }
+
+        // Add the GeoJSON layer to the map
+        var group1 = L.geoJSON(dataset1, {
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng); // Use marker layers for points
+            },
+            onEachFeature: onEachFeature
+        }).addTo(map);
     </script>
 </body>
 </html>
