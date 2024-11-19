@@ -18,12 +18,45 @@
             right: 0;
         }
     </style>
+     <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
+    <!-- Popup Modal -->
+<div class="modal fade" id="overlay">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Welcome to Shipwrecks in Lake Superior</h4>
+        </div>
+        <div class="modal-body">
+          <p>The Shipwreck of the Edmund Fitzgerald has become a Mid-western legend. Due to “Gales of November”,
+            this is the deadliest time for ships to travel due to the raging winds, ice, and snow. Over many decades,
+            ships have succumbed to the unforgiving nature of the lake. The common saying, “Lake Superior never gives up 
+            her dead” rings true. Due to the cold environment, the shipwrecked victims enter a frigid stasis, causing 
+            the people to not decompose.
+        <br>
+        <br>
+             Explore the map of shipwrecks in Lake Superior by scrolling through the timeline. <br> <br>
+             Click on the ship icons to read information about each wreck.
+</p>
+<div class="modal-footer">     
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+</div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Bootstrap JS dependencies -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.6/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <h1>Lake Superior Shipwrecks</h1>
 
     <div id="map"></div>
-
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
@@ -35,7 +68,10 @@
             maxZoom: 19,
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
-
+        // Trigger modal on map load
+        map.whenReady(function() {
+        $('#overlay').modal('show');  // This shows the popup once the map is fully ready. I use whenReady instead of OnLoad here 
+});
         // GeoJSON dataset
         var dataset1 = [
         {
@@ -478,3 +514,4 @@
     </script>
 </body>
 </html>
+
