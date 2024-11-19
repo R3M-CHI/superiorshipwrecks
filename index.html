@@ -21,13 +21,14 @@
 </head>
 <body>
     <h1>Lake Superior Shipwrecks</h1>
+
     <div id="map"></div>
 
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
         // Initialize the map and set its view to the chosen geographical coordinates and zoom level
-        var map = L.map('map').setView([47.7231, -86.9407], 5); // Coordinates set to Lake Superior by default
+        var map = L.map('map').setView([47.610805, -88.219135], 7); // Coordinates set to Lake Superior by default
 
         // Add OpenStreetMap tiles
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
