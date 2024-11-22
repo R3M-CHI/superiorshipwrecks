@@ -17,6 +17,21 @@
             left: 0;
             right: 0;
         }
+        .timeline-container {
+            position: absolute;
+            top: 85%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            z-index: 1000;
+        }
+
+        .timeline-container input {
+            width: 100%;
+        }
     </style>
      <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -57,6 +72,13 @@
     <h1>Lake Superior Shipwrecks</h1>
 
     <div id="map"></div>
+
+     <!-- Timeline Slider -->
+     <div class="timeline-container">
+        <label for="yearSlider">Select Year: <span id="selectedYear">1870</span></label>
+        <input type="range" id="yearSlider" min="1800" max="2024" value="1870" step="1">
+    </div>
+
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script>
@@ -477,7 +499,41 @@
             },
 
         ];
+         // Create markers for each shipwreck
+         var markers = [];
+        dataset1.forEach(function(wreck) {
+            var marker = L.marker([wreck.geometry.coordinates[1], wreck.geometry.coordinates[0]], {icon: L.icon(wreck.properties.icon)});
+            marker.bindPopup('<b>' + wreck.properties.title + '</b><br>' + wreck.properties.description + '<br><img src="' + wreck.properties.image + '" width="200px">');
+            markers.push({marker: marker, time: new Date(wreck.properties.time).getFullYear()});
+        });
+        // Add markers to the map
+        var markersLayer = L.layerGroup().addTo(map);
 
+        // Function to filter markers based on selected year
+        function filterMarkersByYear(year) {
+            markersLayer.clearLayers(); // Clear existing markers
+            markers.forEach(function(item) {
+                if (item.time <= year) {
+                    // Show markers for years up to and including the selected year
+                    item.marker.addTo(markersLayer);
+                    console.log('Marker added:', item.marker);
+                }
+            });
+        }
+         // Initialize the slider and update the map when the slider value changes
+         var yearSlider = document.getElementById("yearSlider");
+        var selectedYear = document.getElementById("selectedYear");
+
+        yearSlider.addEventListener("input", function() {
+           var year = parseInt(yearSlider.value);
+           selectedYear.textContent = year;
+           console.log('Selected Year:', year);
+           filterMarkersByYear(year);
+        }); 
+
+         // Initial filter based on default slider value (1870)
+         filterMarkersByYear(parseInt(yearSlider.value));
+       
         // Function to handle each feature in the GeoJSON
         function onEachFeature(feature, layer) {
             if (feature.properties) {
@@ -494,7 +550,12 @@
                     </div>`;
                 
                 // Create a custom Leaflet icon
-                var customIcon = L.icon(feature.properties.icon);
+                var customIcon = L.icon({
+                    iconUrl: feature,properties,icon,iconUrl,
+                    iconSize: feature.properties.icon.iconSize || [40,40],
+                    iconAnchor: feature.properties.icon.iconAnchor || [3,35],
+                    popupAnchor: feature.properties.icon.popupAnchor || [0,-41]
+                });
 
                 // Set the custom icon for the layer
                 layer.setIcon(customIcon);
@@ -503,7 +564,6 @@
                 layer.bindPopup(content, { closeButton: true });
             }
         }
-
         // Add the GeoJSON layer to the map
         var group1 = L.geoJSON(dataset1, {
             pointToLayer: function(feature, latlng) {
