@@ -76,7 +76,7 @@
      <!-- Timeline Slider -->
      <div class="timeline-container">
         <label for="yearSlider">Select Year: <span id="selectedYear">1868</span></label>
-        <input type="range" id="yearSlider" min="1868" max="2024" value="1868" step="1">
+        <input type="range" id="yearSlider" min="1868" max="1975" value="1868" step="1">
     </div>
 
     <!-- Leaflet JS -->
@@ -86,10 +86,10 @@
         var map = L.map('map').setView([47.610805, -88.219135], 7); // Coordinates set to Lake Superior by default
 
         // Add OpenStreetMap tiles
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            maxZoom: 19,
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
+        L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg?api_key=7d77e1bc-ad32-44ff-b1ef-16adf81fd8e2', {
+    maxZoom: 16,
+    attribution: '© <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a> © <a href="https://stamen.com/" target="_blank">Stamen Design</a> © <a href="https://www.openstreetmap.org/copyright" target="_blank">OpenStreetMap</a>'
+}).addTo(map);
         // Trigger modal on map load
         map.whenReady(function() {
         $('#overlay').modal('show');  // This shows the popup once the map is fully ready. I use whenReady instead of OnLoad here 
